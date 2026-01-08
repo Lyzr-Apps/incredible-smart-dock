@@ -21,7 +21,6 @@ import {
   CheckCircle,
   Clock,
   FileText,
-  Home,
   MessageSquare,
   User,
   ChevronRight,
