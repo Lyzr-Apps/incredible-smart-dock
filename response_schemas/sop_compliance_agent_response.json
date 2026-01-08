@@ -1,0 +1,43 @@
+{
+  "agent_name": "SOP Compliance Agent",
+  "agent_id": "69601712566bcffb7aebac5f",
+  "agent_purpose": "assistant",
+  "description": "Evaluates dispute against SOP and policies",
+  "response_schema": {
+    "status": "string (success|error)",
+    "result": {
+      "response": "string",
+      "action_taken": "string (optional)",
+      "data": "object (optional, any structured data)",
+      "suggestions": [
+        "string (optional)"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string (ISO)"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "response": "I've completed the task you requested",
+      "action_taken": "Processed the input and generated output",
+      "data": {
+        "key": "value"
+      },
+      "suggestions": [
+        "You might also want to try X"
+      ]
+    },
+    "metadata": {
+      "agent_name": "SOP Compliance Agent",
+      "timestamp": "2025-01-15T10:30:00Z"
+    }
+  },
+  "is_actual_tested": false,
+  "test_timestamp": null,
+  "test_message_used": "Hello, provide a sample response",
+  "raw_test_response": "Here's a sample compliance dispute assessment following the specified format:\n\n**SOP Compliance Evaluation**\n\n**Eligibility Criteria:**\n- \u2713 Filed within timeframe\n- \u2713 Valid dispute reason\n- \u2717 Documentation incomplete\n- \u2713 Account in good standing\n\n**Policy Assessment:**\n- Fast-Track Eligible: No\n- Fraud Indicators: \n  - Unusual transaction location\n  - Potential unauthorized transaction\n- Risk Level: Medium\n\n**Recommendation:** MANUAL REVIEW\n**Confidence:** Medium\n**Reasoning:** Transaction exhibits potential fraud signals requiring additional investigation. Incomplete documentation necessitates further verification before final determination.\n\n**Regulatory Notes:** \n- Adheres to Regulation Z dispute resolution guidelines\n- Requires supplemental customer evidence submission\n- Recommend thorough merchant transaction validation\n\nThis sample demonstrates a structured compliance review approach focusing on objective policy assessment and clear, procedural recommendations.",
+  "test_error": "Response not valid JSON: Expecting value: line 1 column 1 (char 0)"
+}

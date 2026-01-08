@@ -1,0 +1,43 @@
+{
+  "agent_name": "Transaction Data Agent",
+  "agent_id": "696017125e0239738a836817",
+  "agent_purpose": "assistant",
+  "description": "Retrieves transaction data from database",
+  "response_schema": {
+    "status": "string (success|error)",
+    "result": {
+      "response": "string",
+      "action_taken": "string (optional)",
+      "data": "object (optional, any structured data)",
+      "suggestions": [
+        "string (optional)"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string (ISO)"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "response": "I've completed the task you requested",
+      "action_taken": "Processed the input and generated output",
+      "data": {
+        "key": "value"
+      },
+      "suggestions": [
+        "You might also want to try X"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Transaction Data Agent",
+      "timestamp": "2025-01-15T10:30:00Z"
+    }
+  },
+  "is_actual_tested": false,
+  "test_timestamp": null,
+  "test_message_used": "Hello, provide a sample response",
+  "raw_test_response": "**Transaction Data Retrieved**\n\n**Disputed Transaction:**\n- Trans ID: TXN-2023-0987\n- Date: 2023-09-15 14:23:41\n- Merchant: QuickMart Grocery\n- Amount: $127.45\n- Status: Posted\n- Card Present: Yes\n- Merchant Category Code (MCC): 5411 (Grocery Stores)\n\n**Merchant History (Last 90 days):**\n1. 2023-08-22 - QuickMart Grocery - $95.67\n2. 2023-07-30 - QuickMart Grocery - $112.33\n3. 2023-09-01 - QuickMart Grocery - $105.22\n\n**Account Activity Context:**\n- 2023-09-14: Online Purchase - StreamingService - $14.99\n- 2023-09-15: QuickMart Grocery - $127.45 (Disputed Transaction)\n- 2023-09-16: Gas Station Fill-up - $45.67\n\n**Anomaly Analysis:**\n- Transaction amount slightly higher than previous purchases (+19%)\n- Consistent merchant location\n- No unusual geographic or timing indicators\n\n**Recommendation:**\nFurther investigation recommended to verify transaction legitimacy and understand reason for slight price variation.\n\nWould you like me to elaborate on any specific aspect of this transaction analysis?",
+  "test_error": "Response not valid JSON: Expecting value: line 1 column 1 (char 0)"
+}

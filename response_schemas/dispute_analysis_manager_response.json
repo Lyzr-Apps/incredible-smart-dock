@@ -1,0 +1,43 @@
+{
+  "agent_name": "Dispute Analysis Manager",
+  "agent_id": "6960171f5e0239738a836819",
+  "agent_purpose": "assistant",
+  "description": "Orchestrates analysis workflow and aggregates findings",
+  "response_schema": {
+    "status": "string (success|error)",
+    "result": {
+      "response": "string",
+      "action_taken": "string (optional)",
+      "data": "object (optional, any structured data)",
+      "suggestions": [
+        "string (optional)"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string (ISO)"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "response": "I've completed the task you requested",
+      "action_taken": "Processed the input and generated output",
+      "data": {
+        "key": "value"
+      },
+      "suggestions": [
+        "You might also want to try X"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Dispute Analysis Manager",
+      "timestamp": "2025-01-15T10:30:00Z"
+    }
+  },
+  "is_actual_tested": false,
+  "test_timestamp": null,
+  "test_message_used": "Hello, provide a sample response",
+  "raw_test_response": "Certainly! Here's a sample response for a dispute analysis coordination task:\n\n---\n\n**Dispute Analysis Complete**\n\n**Case Reference:** 123456\n\n**Transaction Analysis:**\nThe transaction data review shows that the payment of $500 was made from the customer's bank account to the merchant on September 15, 2023. The transaction ID is TXN987654321. There were no signs of unusual activity or chargebacks associated with the transaction.\n\n**Compliance Assessment:**\nUpon evaluating the compliance with the standard operating procedure (SOP), it was found that the merchant followed all the required protocols for this transaction, including proper authorization and confirmation. No deviations from the approved process were identified.\n\n**Preliminary Decision:** APPROVED\n**Confidence Level:** High\n\n**Key Factors:**\n- Transaction authenticity confirmed via cross-check with bank records\n- SOP compliance verified with no discrepancies\n- Confirmation of transaction legitimacy from both merchant and customer ends\n\n**Ready for Decision Presentation**\n\n---\n\nThis example shows how to structure the response by coordinating inputs from sub-agents and producing a unified output.",
+  "test_error": "Response not valid JSON: Expecting value: line 1 column 1 (char 0)"
+}

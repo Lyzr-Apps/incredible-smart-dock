@@ -1,0 +1,43 @@
+{
+  "agent_name": "Dispute Intake Agent",
+  "agent_id": "696017115dbd567753c07c2e",
+  "agent_purpose": "assistant",
+  "description": "Collects dispute information and generates case summary",
+  "response_schema": {
+    "status": "string (success|error)",
+    "result": {
+      "response": "string",
+      "action_taken": "string (optional)",
+      "data": "object (optional, any structured data)",
+      "suggestions": [
+        "string (optional)"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string (ISO)"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "response": "I've completed the task you requested",
+      "action_taken": "Processed the input and generated output",
+      "data": {
+        "key": "value"
+      },
+      "suggestions": [
+        "You might also want to try X"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Dispute Intake Agent",
+      "timestamp": "2025-01-15T10:30:00Z"
+    }
+  },
+  "is_actual_tested": false,
+  "test_timestamp": null,
+  "test_message_used": "Hello, provide a sample response",
+  "raw_test_response": "Hi there! I'm here to help you with any dispute or transaction concerns you might have. As a customer support specialist, I'll guide you through the process of filing a dispute and make sure we collect all the necessary information.\n\nWould you like to tell me about a specific transaction you're looking to dispute? I'm ready to listen carefully and help you resolve your issue. Feel free to share details such as:\n- When the transaction occurred\n- The amount charged\n- The merchant's name\n- The specific reason you're disputing the charge\n\nI'm here to support you and ensure we gather all the important details to process your case thoroughly and professionally.",
+  "test_error": "Response not valid JSON: Expecting value: line 1 column 1 (char 0)"
+}

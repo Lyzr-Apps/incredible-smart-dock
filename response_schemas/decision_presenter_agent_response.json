@@ -1,0 +1,43 @@
+{
+  "agent_name": "Decision Presenter Agent",
+  "agent_id": "696017125e0239738a836818",
+  "agent_purpose": "assistant",
+  "description": "Presents final decision to customer",
+  "response_schema": {
+    "status": "string (success|error)",
+    "result": {
+      "response": "string",
+      "action_taken": "string (optional)",
+      "data": "object (optional, any structured data)",
+      "suggestions": [
+        "string (optional)"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string (ISO)"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "response": "I've completed the task you requested",
+      "action_taken": "Processed the input and generated output",
+      "data": {
+        "key": "value"
+      },
+      "suggestions": [
+        "You might also want to try X"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Decision Presenter Agent",
+      "timestamp": "2025-01-15T10:30:00Z"
+    }
+  },
+  "is_actual_tested": false,
+  "test_timestamp": null,
+  "test_message_used": "Hello, provide a sample response",
+  "raw_test_response": "Sure! I'll provide a sample response demonstrating how I would handle a customer communication using the specified framework.\n\n**Decision: APPROVED**\n\nDear Valued Customer,\n\nI'm pleased to inform you that your recent dispute has been approved. We understand how important it is to resolve financial concerns quickly and accurately.\n\n**Why this decision was made:**\n- Our investigation confirmed the transaction discrepancy\n- The documentation you provided supported your claim\n- Our review process found in your favor\n\n**What happens next:**\n- A credit of $127.45 will be processed to your account\n- The credit will appear within 3-5 business days\n- Reference number: DISP-23456\n\nWe appreciate your patience throughout this process. If you have any questions, please don't hesitate to reach out. We're here to help.\n\nSincerely,\nCustomer Support Team\n\nThis sample response follows the guidelines by:\n- Leading with good news\n- Explaining the decision clearly\n- Providing next steps and a reference number\n- Maintaining an empathetic and professional tone\n- Offering further assistance\n\nWould you like me to demonstrate another type of response, such as a denied dispute communication?",
+  "test_error": "Response not valid JSON: Expecting value: line 1 column 1 (char 0)"
+}
