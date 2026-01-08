@@ -169,9 +169,21 @@ export default function Home() {
       const result = await callAIAgent(inputMessage, AGENT_IDS.DISPUTE_INTAKE)
 
       if (result.success && result.response) {
+        // Extract text from agent response
+        let responseText = 'I understand. Let me help you with that.'
+        if (result.response.result?.response) {
+          responseText = typeof result.response.result.response === 'string'
+            ? result.response.result.response
+            : result.response.result.response?.text || JSON.stringify(result.response.result.response)
+        } else if (result.response.result) {
+          responseText = typeof result.response.result === 'string'
+            ? result.response.result
+            : result.response.result?.text || JSON.stringify(result.response.result)
+        }
+
         const agentMessage: ChatMessage = {
           role: 'agent',
-          content: result.response.result?.response || result.response.result || 'I understand. Let me help you with that.',
+          content: responseText,
           timestamp: new Date().toISOString(),
         }
 
@@ -224,10 +236,22 @@ Please coordinate transaction data review and compliance assessment.`
       const result = await callAIAgent(analysisRequest, AGENT_IDS.DISPUTE_ANALYSIS_MANAGER)
 
       if (result.success && result.response) {
+        // Extract text from analysis response
+        let analysisText = 'Analysis complete'
+        if (result.response.result?.response) {
+          analysisText = typeof result.response.result.response === 'string'
+            ? result.response.result.response
+            : result.response.result.response?.text || JSON.stringify(result.response.result.response)
+        } else if (result.response.result) {
+          analysisText = typeof result.response.result === 'string'
+            ? result.response.result
+            : result.response.result?.text || JSON.stringify(result.response.result)
+        }
+
         setAnalysisResult({
-          rawResponse: result.response.result?.response || 'Analysis complete',
-          preliminaryDecision: extractDecision(result.response.result?.response || ''),
-          confidence: extractConfidence(result.response.result?.response || ''),
+          rawResponse: analysisText,
+          preliminaryDecision: extractDecision(analysisText),
+          confidence: extractConfidence(analysisText),
           transactions: generateMockTransactions(),
           compliance: generateMockCompliance(),
         })
@@ -903,7 +927,24 @@ function DecisionScreen({
   onStartNew: () => void
   onBackToDashboard: () => void
 }) {
-  const decision = extractDecisionFromText(decisionData?.result?.response || '')
+  // Extract text from decision response
+  const getDecisionText = (): string => {
+    if (!decisionData?.result) return 'Decision details are being processed.'
+
+    const resultData = decisionData.result
+    if (resultData.response) {
+      if (typeof resultData.response === 'string') return resultData.response
+      if (resultData.response?.text) return resultData.response.text
+      return JSON.stringify(resultData.response)
+    }
+
+    if (typeof resultData === 'string') return resultData
+    if (resultData?.text) return resultData.text
+    return JSON.stringify(resultData)
+  }
+
+  const decisionText = getDecisionText()
+  const decision = extractDecisionFromText(decisionText)
 
   const downloadSummary = () => {
     const content = `
@@ -917,7 +958,7 @@ Date: ${caseDetails.date}
 
 DECISION: ${decision.toUpperCase()}
 
-${decisionData?.result?.response || 'No decision details available'}
+${decisionText}
 
 Generated: ${new Date().toLocaleString()}
     `
@@ -979,7 +1020,7 @@ Generated: ${new Date().toLocaleString()}
         <CardContent className="pt-6">
           <div className="prose max-w-none">
             <p className="text-gray-700 whitespace-pre-wrap">
-              {decisionData?.result?.response || 'Decision details are being processed.'}
+              {decisionText}
             </p>
           </div>
         </CardContent>
